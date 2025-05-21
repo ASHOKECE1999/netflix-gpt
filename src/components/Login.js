@@ -2,52 +2,79 @@ import React, { use, useRef, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignUp, setSignUp] = useState(true);
+  const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
+  const userName = useRef(null);
   const [erroMsg, errorMsgSetter] = useState(null);
+  const dispatch = useDispatch();
 
   const handleButtonClick = () => {
     console.log(email, password);
     const message = checkValidData(email.current.value, password.current.value);
     errorMsgSetter(message);
     console.log(message);
-    if (isSignUp) {
-      signInWithEmailAndPassword(auth,email.current.value, password.current.value)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log(user)
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          errorMsgSetter(errorCode + "-" + errorMessage);
-        });
-    } else {
+    if (!isSignUp) {
+      // Sign Up flow
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
       )
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
-          console.log(user);
-          // ...
+
+          return updateProfile(user, {
+            displayName: userName.current.value,
+            photoURL: "https://wallpapers.com/images/hd/cool-neon-blue-profile-picture-u9y9ydo971k9mdcf.jpg",
+          }).then(() => {
+            const updatedUser = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: updatedUser.uid,
+                email: updatedUser.email,
+                displayName: updatedUser.displayName,
+                photoURL: updatedUser.photoURL,
+              })
+            );
+            navigate("/browse");
+          });
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          errorMsgSetter(errorCode + "-" + errorMessage);
-          // ..
+          errorMsgSetter(error.code + " - " + error.message);
+        });
+    } else {
+      // Sign In flow
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          dispatch(
+            addUser({
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName,
+              photoURL: user.photoURL,
+            })
+          );
+          navigate("/browse");
+        })
+        .catch((error) => {
+          errorMsgSetter(error.code + " - " + error.message);
         });
     }
   };
@@ -75,6 +102,7 @@ const Login = () => {
         {!isSignUp && (
           <input
             type="text"
+            ref={userName}
             placeholder="Enter Full Name"
             className=" p-2 m-2 bg-gray-500"
           />

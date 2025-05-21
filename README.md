@@ -9,6 +9,7 @@ Login form
 - fire base setup
 -firebase deployment to production
 -create synup user 
+- created redux store setup with createSlice
 
 
 

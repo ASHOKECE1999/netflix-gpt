@@ -1,6 +1,9 @@
 # netflix GPT
 - did create-create-app
 - configured tailwindCss
+-header
+Login form
+
 
 
 # features

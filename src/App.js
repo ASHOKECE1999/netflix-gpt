@@ -1,11 +1,9 @@
-import logo from './logo.svg';
+import Body from "./components/Body";
 
 
 function App() {
   return (
-    <div className="m-6 font-bold text-3xl text text-gray-500">
-     this is react-app with hook
-    </div>
+    <Body/>
   );
 }
 

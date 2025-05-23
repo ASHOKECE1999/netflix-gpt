@@ -47,3 +47,4 @@ const GPTSearchBar = () => {
 };
 
 export default GPTSearchBar;
+

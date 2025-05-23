@@ -20,6 +20,10 @@ Login form
 - made embaded video
 -give autoplay and mute
 -developed trending , popular , live movies scroll bars
+-implemented chatGPT search bar
+- implemented search prams on forms based on language
+-impleted select element to change the language by user
+-create config slice to change ,save the language config details
 
 
 # features

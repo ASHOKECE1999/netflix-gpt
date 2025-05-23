@@ -43,10 +43,10 @@ const Header = () => {
   }, []);
 
   return (
-    <div className='absolute px-8 py-2 bg-gradient-to-b from-black w-[100%] z-20 flex items-center justify-between'>
+    <div className='absolute bg-gradient-to-b from-black w-[100%] z-30 flex items-center justify-between m-0 p-4'>
         <img className='h-[100px]' alt="logo" src={LOGO}/>
      {user && ( <div className='flex items-center justify-between'>
-        <img className=' mr-3 w-[40px] rounded-lg hover:bg-white p-2' src={user.photoURL} alt="userIcon"/>
+        <img className=' mr-3 w-[50px] rounded-lg hover:bg-white p-2' src={user.photoURL} alt="userIcon"/>
         <button  onClick={handleSignOut} className='bg-black text-white font-bold p-2 rounded-2xl mr-2 hover:bg-slate-600'>Sign Out</button>
       </div>)}
     </div>

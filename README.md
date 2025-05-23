@@ -19,6 +19,7 @@ Login form
 - registered for tmdb create new APP, get access token , go to API documentation for get live movie api calls
 - made embaded video
 -give autoplay and mute
+-developed trending , popular , live movies scroll bars
 
 
 # features

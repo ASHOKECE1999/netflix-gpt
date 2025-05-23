@@ -4,8 +4,7 @@ export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOGNjYzNlYjQzNjBkYWEwZTA0Nzc3NGVkODQ1ZDg3MiIsIm5iZiI6MTc0Nzk2MTg0NS43Mjk5OTk4LCJzdWIiOiI2ODJmYzdmNTM1MzcwMTJhMjI0MTMyMzQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.R4KfNgzboirHbp6cIe8GiqOODsDPBCUFWYL_vatEXi8'
-  }
+    Authorization: "Bearer"+ process.env.REACT_APP_TMDB_KEY }
 };
 export const IMG_CDN="https://image.tmdb.org/t/p/w500/"
 export const BG_IMG="https://assets.nflxext.com/ffe/siteui/vlv3/202ac35e-1fca-44f0-98d9-ea7e8211a07c/web/IN-en-20250512-TRIFECTA-perspective_688b8c03-78cb-46a6-ac1c-1035536f871a_large.jpg"

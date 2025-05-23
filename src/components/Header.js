@@ -81,7 +81,7 @@ const Header = () => {
           )}
 
           <button
-            className="bg-gray-800 rounded-md text-white font-bold px-4 py-2 hover:bg-purple-600"
+            className="bg-pink-600 rounded-md text-white font-bold px-4 py-2 hover:bg-purple-600"
             onClick={toggleHandler}
           >
             GPT Search

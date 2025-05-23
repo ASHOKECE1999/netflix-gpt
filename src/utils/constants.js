@@ -7,3 +7,18 @@ export const API_OPTIONS = {
     Authorization: "Bearer"+ process.env.REACT_APP_TMDB_KEY }
 };
 export const IMG_CDN="https://image.tmdb.org/t/p/w500/"
+export const BG_IMG="https://assets.nflxext.com/ffe/siteui/vlv3/202ac35e-1fca-44f0-98d9-ea7e8211a07c/web/IN-en-20250512-TRIFECTA-perspective_688b8c03-78cb-46a6-ac1c-1035536f871a_large.jpg"
+export const languageOptions = [
+  {
+    label: "English",
+    value: "en",
+  },
+  {
+    label: "हिन्दी",
+    value: "hi",
+  },
+  {
+    label: "Español",
+    value: "es",
+  },
+];

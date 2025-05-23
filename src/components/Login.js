@@ -1,4 +1,4 @@
-import React, { use, useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -7,13 +7,12 @@ import {
 import { auth } from "../utils/firebase";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_AVATHAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignUp, setSignUp] = useState(true);
-  const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
   const userName = useRef(null);
@@ -37,7 +36,7 @@ const Login = () => {
 
           return updateProfile(user, {
             displayName: userName.current.value,
-            photoURL: "https://wallpapers.com/images/hd/cool-neon-blue-profile-picture-u9y9ydo971k9mdcf.jpg",
+            photoURL: USER_AVATHAR
           }).then(() => {
             const updatedUser = auth.currentUser;
             dispatch(
@@ -48,7 +47,6 @@ const Login = () => {
                 photoURL: updatedUser.photoURL,
               })
             );
-            navigate("/browse");
           });
         })
         .catch((error) => {
@@ -71,7 +69,7 @@ const Login = () => {
               photoURL: user.photoURL,
             })
           );
-          navigate("/browse");
+         
         })
         .catch((error) => {
           errorMsgSetter(error.code + " - " + error.message);
@@ -94,9 +92,9 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute bg-opacity-70 bg-black my-36 mx-auto left-0 right-0 w-3/12  flex flex-col items-center p-2 text-white rounded-lg"
+        className="absolute bg-opacity-70 bg-black my-36 mx-auto left-0 right-0  flex flex-col justify-center items-center p-5  text-white rounded-lg h-[400px] w-[300px] text-right"
       >
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-3xl font-bold text-left">
           {isSignUp ? "Sign in" : "Sign Up"}
         </h1>
         {!isSignUp && (

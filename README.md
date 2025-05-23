@@ -10,6 +10,12 @@ Login form
 -firebase deployment to production
 -create synup user 
 - created redux store setup with createSlice
+-signin form / signout form
+-update profile also
+-bugfix of DsiplayName and Profile Picture
+- navigation based on auth
+- unSubsrcibes the enent on succesfull onAuthStateChanged
+- add hardcoded fiels to constas file
 
 
 

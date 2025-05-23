@@ -16,7 +16,9 @@ Login form
 - navigation based on auth
 - unSubsrcibes the enent on succesfull onAuthStateChanged
 - add hardcoded fiels to constas file
-
+- registered for tmdb create new APP, get access token , go to API documentation for get live movie api calls
+- made embaded video
+-give autoplay and mute
 
 
 # features
